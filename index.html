@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wedding Invitation | Gisser & Marialyn</title>
+  
+  <!-- Google Fonts: Luxury Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Ambient Golden Floating Dust Particles -->
+  <canvas id="ambient-canvas"></canvas>
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Ambient Sound Control -->
+  <button id="sound-btn" class="sound-toggle" aria-label="Toggle Sound">
+    <i class="fa-solid fa-volume-high"></i>
+    <span class="sound-tooltip">Sound On</span>
+  </button>
+
+  <!-- Main Experience Wrapper -->
+  <main class="scene-container">
+    
+    <!-- Stage: Holds Envelope and Unfolded Card -->
+    <div class="stage" id="stage">
+      
+      <!-- Envelope Component -->
+      <div class="envelope-wrapper" id="envelope-wrapper">
+        <div class="envelope" id="envelope">
+          
+          <!-- Back Interior of Envelope -->
+          <div class="envelope-back">
+            <div class="inner-foil-pattern"></div>
+          </div>
+
+          <!-- The Invitation Letter (Slides out) -->
+          <article class="invitation-card" id="invitation-card">
+            
+            <!-- Metallic Foil Ornate Border -->
+            <div class="card-border-ornament">
+              <div class="corner-ornament top-left"></div>
+              <div class="corner-ornament top-right"></div>
+              <div class="corner-ornament bottom-left"></div>
+              <div class="corner-ornament bottom-right"></div>
+            </div>
+
+            <!-- Card Content -->
+            <div class="card-inner">
+              
+              <!-- Monogram Seal -->
+              <div class="crest-container">
+                <div class="crest-ring">
+                  <span class="crest-monogram">G & M</span>
+                </div>
+              </div>
+
+              <p class="invite-header">TOGETHER WITH THEIR FAMILIES</p>
+              
+              <!-- Couple's Names in Gilded Metallic Foil -->
+              <h1 class="couple-names">
+                <span class="first-name">Gisser</span>
+                <span class="ampersand">&</span>
+                <span class="first-name">Marialyn</span>
+              </h1>
+
+              <p class="invite-subtext">
+                REQUEST THE PLEASURE OF YOUR COMPANY<br>
+                AT THE CELEBRATION OF THEIR HOLY MATRIMONY
+              </p>
+
+              <!-- Date Badge -->
+              <div class="event-date-badge">
+                <div class="badge-line"></div>
+                <div class="badge-content">
+                  <span class="badge-day">SATURDAY</span>
+                  <span class="badge-full-date">December 22, 2026</span>
+                  <span class="badge-time">AT ONE O'CLOCK IN THE AFTERNOON</span>
+                </div>
+                <div class="badge-line"></div>
+              </div>
+
+              <!-- Venue Details -->
+              <div class="venue-info">
+                <p class="venue-title">THE GRAND CELESTIAL PALACE</p>
+                <p class="venue-address">Plaza, Wabalo, San Carlos</p>
+              </div>
+
+              <!-- Countdown Timer -->
+              <div class="countdown-wrapper">
+                <p class="countdown-title">COUNTING DOWN TO OUR FOREVER</p>
+                <div class="countdown-timer" id="countdown">
+                  <div class="time-box">
+                    <span class="time-val" id="days">000</span>
+                    <span class="time-label">Days</span>
+                  </div>
+                  <span class="time-sep">:</span>
+                  <div class="time-box">
+                    <span class="time-val" id="hours">00</span>
+                    <span class="time-label">Hours</span>
+                  </div>
+                  <span class="time-sep">:</span>
+                  <div class="time-box">
+                    <span class="time-val" id="mins">00</span>
+                    <span class="time-label">Mins</span>
+                  </div>
+                  <span class="time-sep">:</span>
+                  <div class="time-box">
+                    <span class="time-val" id="secs">00</span>
+                    <span class="time-label">Secs</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Interactive Actions -->
+              <div class="card-actions">
+                <button class="btn btn-gold" id="open-rsvp-btn">
+                  <i class="fa-regular fa-envelope"></i>
+                  <span>RSVP NOW</span>
+                </button>
+                <button class="btn btn-outline" id="calendar-btn">
+                  <i class="fa-regular fa-calendar-plus"></i>
+                  <span>Add to Calendar</span>
+                </button>
+                <button class="btn btn-outline" id="location-btn">
+                  <i class="fa-solid fa-location-dot"></i>
+                  <span>Location</span>
+                </button>
+                <button class="btn btn-outline" id="share-btn" title="Copy invitation link">
+                  <i class="fa-solid fa-share-nodes"></i>
+                  <span>Share</span>
+                </button>
+              </div>
+
+              <!-- Re-seal Button -->
+              <button class="reseal-btn" id="reseal-btn" title="Fold back into envelope">
+                <i class="fa-solid fa-arrow-rotate-left"></i> Re-seal Envelope
+              </button>
+            </div>
+            
+            <!-- Metallic Card Specular Glare Layer -->
+            <div class="card-glare" id="card-glare"></div>
+          </article>
+
+          <!-- Front Pocket Layers (creates depth pocket for the letter) -->
+          <div class="envelope-pocket-left"></div>
+          <div class="envelope-pocket-right"></div>
+          <div class="envelope-pocket-bottom"></div>
+
+          <!-- Top Folding Flap -->
+          <div class="envelope-flap" id="envelope-flap">
+            <div class="flap-foil-trim"></div>
+          </div>
+
+          <!-- Metallic Gold Wax Seal Stamp -->
+          <div class="wax-seal" id="wax-seal" role="button" tabindex="0" aria-label="Open wedding invitation">
+            <div class="wax-seal-outer">
+              <div class="wax-seal-inner">
+                <div class="monogram-emboss">
+                  <span>G</span>
+                  <span class="monogram-heart">❤</span>
+                  <span>M</span>
+                </div>
+              </div>
+            </div>
+            <div class="wax-seal-glow"></div>
+            <div class="seal-prompt">
+              <span class="prompt-text">Click to Open</span>
+              <div class="prompt-arrow">▼</div>
+            </div>
+          </div>
+
+        </div> <!-- /envelope -->
+      </div> <!-- /envelope-wrapper -->
+
+    </div> <!-- /stage -->
+
+    <footer class="page-footer">
+      <p>With Love, Gisser & Marialyn • Formal Attire Requested</p>
+    </footer>
+
+  </main>
+
+  <!-- Interactive RSVP Modal -->
+  <div class="modal-backdrop" id="rsvp-modal">
+    <div class="modal-card">
+      <button class="modal-close" id="close-rsvp-btn" aria-label="Close RSVP Modal">&times;</button>
+      
+      <div class="modal-crest">
+        <i class="fa-solid fa-champagne-glasses"></i>
+      </div>
+      
+      <h2 class="modal-title">RSVP</h2>
+      <p class="modal-subtitle">Kindly respond by December 1, 2026</p>
+
+      <form id="rsvp-form" class="rsvp-form">
+        <div class="form-group">
+          <label for="guest-name">Full Name(s)</label>
+          <input type="text" id="guest-name" required placeholder="Lord & Lady Bridgerton">
+        </div>
+
+        <div class="form-group">
+          <label>Will You Attend?</label>
+          <div class="radio-group">
+            <label class="radio-card">
+              <input type="radio" name="attendance" value="accept" checked>
+              <div class="radio-visual">
+                <i class="fa-solid fa-check"></i>
+                <span>Joyfully Accepts</span>
+              </div>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="attendance" value="decline">
+              <div class="radio-visual">
+                <i class="fa-solid fa-xmark"></i>
+                <span>Regretfully Declines</span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group" id="guests-count-group">
+          <label for="guest-count">Number of Guests Attending</label>
+          <select id="guest-count">
+            <option value="1">1 Person</option>
+            <option value="2" selected>2 Persons</option>
+            <option value="3">3 Persons</option>
+            <option value="4">4 Persons</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="dietary-notes">Dietary Restrictions or Special Wishes</label>
+          <textarea id="dietary-notes" rows="2" placeholder="Vegetarian, Gluten-free, or a warm wish for the couple..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-gold btn-block">
+          <span>Confirm Response</span>
+        </button>
+      </form>
+
+      <div class="rsvp-success-message" id="rsvp-success">
+        <div class="success-icon">✨</div>
+        <h3>Thank You!</h3>
+        <p>Your response has been warmly received. We cannot wait to celebrate this magical day with you!</p>
+        <button class="btn btn-outline" id="done-rsvp-btn">Close</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast-notification" id="toast">
+    <i class="fa-solid fa-check"></i>
+    <span id="toast-text">Invitation link copied to clipboard!</span>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
